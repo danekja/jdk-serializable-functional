@@ -39,6 +39,6 @@ import java.util.function.ToIntBiFunction;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableToIntBiFunction extends ToIntBiFunction, Serializable {
+public interface SerializableToIntBiFunction<T, U> extends ToIntBiFunction<T, U>, Serializable {
 
 }

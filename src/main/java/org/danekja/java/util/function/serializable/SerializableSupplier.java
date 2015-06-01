@@ -39,6 +39,6 @@ import java.util.function.Supplier;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableSupplier extends Supplier, Serializable {
+public interface SerializableSupplier<T> extends Supplier<T>, Serializable {
 
 }

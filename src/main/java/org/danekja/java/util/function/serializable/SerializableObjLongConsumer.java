@@ -39,6 +39,6 @@ import java.util.function.ObjLongConsumer;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableObjLongConsumer extends ObjLongConsumer, Serializable {
+public interface SerializableObjLongConsumer<T> extends ObjLongConsumer<T>, Serializable {
 
 }

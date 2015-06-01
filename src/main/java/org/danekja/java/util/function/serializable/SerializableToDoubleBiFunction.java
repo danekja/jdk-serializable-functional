@@ -39,6 +39,6 @@ import java.util.function.ToDoubleBiFunction;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableToDoubleBiFunction extends ToDoubleBiFunction, Serializable {
+public interface SerializableToDoubleBiFunction<T, U> extends ToDoubleBiFunction<T, U>, Serializable {
 
 }

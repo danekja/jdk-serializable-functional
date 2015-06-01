@@ -39,6 +39,6 @@ import java.util.function.UnaryOperator;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableUnaryOperator extends UnaryOperator, Serializable {
+public interface SerializableUnaryOperator<T> extends UnaryOperator<T>, Serializable {
 
 }

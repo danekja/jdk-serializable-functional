@@ -39,6 +39,6 @@ import java.util.function.ObjIntConsumer;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableObjIntConsumer extends ObjIntConsumer, Serializable {
+public interface SerializableObjIntConsumer<T> extends ObjIntConsumer<T>, Serializable {
 
 }

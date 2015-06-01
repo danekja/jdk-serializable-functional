@@ -39,6 +39,6 @@ import java.util.function.ToLongBiFunction;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableToLongBiFunction extends ToLongBiFunction, Serializable {
+public interface SerializableToLongBiFunction<T, U> extends ToLongBiFunction<T, U>, Serializable {
 
 }

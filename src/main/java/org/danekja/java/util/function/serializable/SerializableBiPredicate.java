@@ -39,6 +39,6 @@ import java.util.function.BiPredicate;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableBiPredicate<T, U> extends BiPredicate, Serializable {
+public interface SerializableBiPredicate<T, U> extends BiPredicate<T, U>, Serializable {
 
 }

@@ -39,6 +39,6 @@ import java.util.function.ToDoubleFunction;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableToDoubleFunction extends ToDoubleFunction, Serializable {
+public interface SerializableToDoubleFunction<T> extends ToDoubleFunction<T>, Serializable {
 
 }

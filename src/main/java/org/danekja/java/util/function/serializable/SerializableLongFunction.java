@@ -39,6 +39,6 @@ import java.util.function.LongFunction;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableLongFunction extends LongFunction, Serializable {
+public interface SerializableLongFunction<R> extends LongFunction<R>, Serializable {
 
 }

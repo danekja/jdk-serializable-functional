@@ -39,6 +39,6 @@ import java.util.function.ObjDoubleConsumer;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableObjDoubleConsumer extends ObjDoubleConsumer, Serializable {
+public interface SerializableObjDoubleConsumer<T> extends ObjDoubleConsumer<T>, Serializable {
 
 }

@@ -39,6 +39,6 @@ import java.util.function.Predicate;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializablePredicate extends Predicate, Serializable {
+public interface SerializablePredicate<T> extends Predicate<T>, Serializable {
 
 }
