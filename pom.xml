@@ -4,11 +4,11 @@
 
     <groupId>org.danekja</groupId>
     <artifactId>jdk-serializable-functional</artifactId>
-    <version>1.8.0</version>
+    <version>1.8.1-SNAPSHOT</version>
 
     <scm>
         <developerConnection>scm:git:ssh://github.com/danekja/jdk-serializable-functional.git</developerConnection>
-      <tag>v1.8.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
