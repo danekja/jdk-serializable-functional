@@ -5,11 +5,37 @@
     <groupId>org.danekja</groupId>
     <artifactId>jdk-serializable-functional</artifactId>
     <version>1.8.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>${project.groupId}.${project.artifactId}</name>
+    <description>
+        A library containing Serializable versions of functional interfaces from
+        java.util.function package.
+    </description>
+    <url>https://github.com/danekja/jdk-serializable-functional</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jakub Daněk</name>
+            <email>danek.ja@gmail.com</email>
+            <organization>Jakub Daněk</organization>
+            <organizationUrl>http://www.danekja.org/</organizationUrl>
+        </developer>
+    </developers>
 
     <scm>
-        <developerConnection>scm:git:ssh://github.com/danekja/jdk-serializable-functional.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <connection>scm:git:ssh://git@github.com/danekja/jdk-serializable-functional.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/danekja/jdk-serializable-functional.git</developerConnection>
+        <url>https://github.com/danekja/jdk-serializable-functional/tree/master</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <build>
         <plugins>
