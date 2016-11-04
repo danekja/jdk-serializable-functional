@@ -31,6 +31,8 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Comparator;
+import java.util.Objects;
 import java.util.function.BinaryOperator;
 
 /**
@@ -41,5 +43,13 @@ import java.util.function.BinaryOperator;
  */
 @FunctionalInterface
 public interface SerializableBinaryOperator<T> extends BinaryOperator<T>, Serializable {
+	public static <T> SerializableBinaryOperator<T> minBy(Comparator<? super T> comparator) {
+		Objects.requireNonNull(comparator);
+		return (a, b) -> comparator.compare(a, b) <= 0 ? a : b;
+	}
 
+	public static <T> SerializableBinaryOperator<T> maxBy(Comparator<? super T> comparator) {
+		Objects.requireNonNull(comparator);
+		return (a, b) -> comparator.compare(a, b) >= 0 ? a : b;
+	}
 }

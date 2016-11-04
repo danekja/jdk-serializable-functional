@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 /**
@@ -40,5 +41,21 @@ import java.util.function.Predicate;
  */
 @FunctionalInterface
 public interface SerializablePredicate<T> extends Predicate<T>, Serializable {
+	default SerializablePredicate<T> and(SerializablePredicate<? super T> other) {
+		Objects.requireNonNull(other);
+		return (t) -> test(t) && other.test(t);
+	}
 
+	default SerializablePredicate<T> negate() {
+		return (t) -> !test(t);
+	}
+
+	default SerializablePredicate<T> or(SerializablePredicate<? super T> other) {
+		Objects.requireNonNull(other);
+		return (t) -> test(t) || other.test(t);
+	}
+
+	static <T> SerializablePredicate<T> isEqual(Object targetRef) {
+		return (null == targetRef) ? Objects::isNull : object -> targetRef.equals(object);
+	}
 }

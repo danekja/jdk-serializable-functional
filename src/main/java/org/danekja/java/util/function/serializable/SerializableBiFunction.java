@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.BiFunction;
 
 /**
@@ -40,5 +41,8 @@ import java.util.function.BiFunction;
  */
 @FunctionalInterface
 public interface SerializableBiFunction<T, U, R> extends BiFunction<T, U, R>, Serializable {
-
+	default <V> SerializableBiFunction<T, U, V> andThen(SerializableFunction<? super R, ? extends V> after) {
+		Objects.requireNonNull(after);
+		return (T t, U u) -> after.apply(apply(t, u));
+	}
 }

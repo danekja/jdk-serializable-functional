@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.Function;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.Function;
  */
 @FunctionalInterface
 public interface SerializableFunction<T, R> extends Function<T, R>, Serializable {
+	default <V> SerializableFunction<V, R> compose(SerializableFunction<? super V, ? extends T> before) {
+		Objects.requireNonNull(before);
+		return (V v) -> apply(before.apply(v));
+	}
 
+	default <V> SerializableFunction<T, V> andThen(SerializableFunction<? super R, ? extends V> after) {
+		Objects.requireNonNull(after);
+		return (T t) -> after.apply(apply(t));
+	}
+
+	static <T> SerializableFunction<T, T> identity() {
+		return t -> t;
+	}
 }

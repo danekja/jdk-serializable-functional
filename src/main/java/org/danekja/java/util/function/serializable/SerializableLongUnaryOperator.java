@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.LongUnaryOperator;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.LongUnaryOperator;
  */
 @FunctionalInterface
 public interface SerializableLongUnaryOperator extends LongUnaryOperator, Serializable {
+	default SerializableLongUnaryOperator compose(SerializableLongUnaryOperator before) {
+		Objects.requireNonNull(before);
+		return (long v) -> applyAsLong(before.applyAsLong(v));
+	}
 
+	default SerializableLongUnaryOperator andThen(SerializableLongUnaryOperator after) {
+		Objects.requireNonNull(after);
+		return (long t) -> after.applyAsLong(applyAsLong(t));
+	}
+
+	static SerializableLongUnaryOperator identity() {
+		return t -> t;
+	}
 }

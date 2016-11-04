@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /**
@@ -40,5 +41,11 @@ import java.util.function.Consumer;
  */
 @FunctionalInterface
 public interface SerializableConsumer<T> extends Consumer<T>, Serializable {
-
+	default SerializableConsumer<T> andThen(SerializableConsumer<? super T> after) {
+		Objects.requireNonNull(after);
+		return (T t) -> {
+			accept(t);
+			after.accept(t);
+		};
+	}
 }
