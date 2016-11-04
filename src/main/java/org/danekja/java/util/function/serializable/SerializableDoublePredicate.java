@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.DoublePredicate;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.DoublePredicate;
  */
 @FunctionalInterface
 public interface SerializableDoublePredicate extends DoublePredicate, Serializable {
+	default SerializableDoublePredicate and(SerializableDoublePredicate other) {
+		Objects.requireNonNull(other);
+		return (value) -> test(value) && other.test(value);
+	}
 
+	default SerializableDoublePredicate negate() {
+		return (value) -> !test(value);
+	}
+
+	default SerializableDoublePredicate or(SerializableDoublePredicate other) {
+		Objects.requireNonNull(other);
+		return (value) -> test(value) || other.test(value);
+	}
 }

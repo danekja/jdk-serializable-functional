@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.LongConsumer;
 
 /**
@@ -40,5 +41,8 @@ import java.util.function.LongConsumer;
  */
 @FunctionalInterface
 public interface SerializableLongConsumer extends LongConsumer, Serializable {
-
+    default SerializableLongConsumer andThen(SerializableLongConsumer after) {
+        Objects.requireNonNull(after);
+        return (long t) -> { accept(t); after.accept(t); };
+    }
 }

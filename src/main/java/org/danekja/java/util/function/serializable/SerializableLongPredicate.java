@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.LongPredicate;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.LongPredicate;
  */
 @FunctionalInterface
 public interface SerializableLongPredicate extends LongPredicate, Serializable {
+    default SerializableLongPredicate and(SerializableLongPredicate other) {
+        Objects.requireNonNull(other);
+        return (value) -> test(value) && other.test(value);
+    }
 
+    default SerializableLongPredicate negate() {
+        return (value) -> !test(value);
+    }
+
+    default SerializableLongPredicate or(SerializableLongPredicate other) {
+        Objects.requireNonNull(other);
+        return (value) -> test(value) || other.test(value);
+    }
 }

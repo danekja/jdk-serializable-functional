@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.IntPredicate;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.IntPredicate;
  */
 @FunctionalInterface
 public interface SerializableIntPredicate extends IntPredicate, Serializable {
+	default SerializableIntPredicate and(SerializableIntPredicate other) {
+		Objects.requireNonNull(other);
+		return (value) -> test(value) && other.test(value);
+	}
 
+	default SerializableIntPredicate negate() {
+		return (value) -> !test(value);
+	}
+
+	default SerializableIntPredicate or(SerializableIntPredicate other) {
+		Objects.requireNonNull(other);
+		return (value) -> test(value) || other.test(value);
+	}
 }

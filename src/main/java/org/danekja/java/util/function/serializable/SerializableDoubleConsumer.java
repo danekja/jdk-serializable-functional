@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.DoubleConsumer;
 
 /**
@@ -39,6 +40,12 @@ import java.util.function.DoubleConsumer;
  * @author Jakub Danek (www.danekja.org)
  */
 @FunctionalInterface
-public interface SerializableDoubleConsumer extends DoubleConsumer, Serializable{
-
+public interface SerializableDoubleConsumer extends DoubleConsumer, Serializable {
+	default SerializableDoubleConsumer andThen(SerializableDoubleConsumer after) {
+		Objects.requireNonNull(after);
+		return (double t) -> {
+			accept(t);
+			after.accept(t);
+		};
+	}
 }

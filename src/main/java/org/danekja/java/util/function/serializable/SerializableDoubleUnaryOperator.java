@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.DoubleUnaryOperator;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.DoubleUnaryOperator;
  */
 @FunctionalInterface
 public interface SerializableDoubleUnaryOperator extends DoubleUnaryOperator, Serializable {
+	default SerializableDoubleUnaryOperator compose(SerializableDoubleUnaryOperator before) {
+		Objects.requireNonNull(before);
+		return (double v) -> applyAsDouble(before.applyAsDouble(v));
+	}
 
+	default SerializableDoubleUnaryOperator andThen(SerializableDoubleUnaryOperator after) {
+		Objects.requireNonNull(after);
+		return (double t) -> after.applyAsDouble(applyAsDouble(t));
+	}
+
+	static SerializableDoubleUnaryOperator identity() {
+		return t -> t;
+	}
 }

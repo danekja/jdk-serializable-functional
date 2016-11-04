@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.IntUnaryOperator;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.IntUnaryOperator;
  */
 @FunctionalInterface
 public interface SerializableIntUnaryOperator extends IntUnaryOperator, Serializable {
+	default SerializableIntUnaryOperator compose(SerializableIntUnaryOperator before) {
+		Objects.requireNonNull(before);
+		return (int v) -> applyAsInt(before.applyAsInt(v));
+	}
 
+	default SerializableIntUnaryOperator andThen(SerializableIntUnaryOperator after) {
+		Objects.requireNonNull(after);
+		return (int t) -> after.applyAsInt(applyAsInt(t));
+	}
+
+	static SerializableIntUnaryOperator identity() {
+		return t -> t;
+	}
 }

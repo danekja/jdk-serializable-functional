@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 
 /**
@@ -40,5 +41,12 @@ import java.util.function.BiConsumer;
  */
 @FunctionalInterface
 public interface SerializableBiConsumer<T, U> extends BiConsumer<T, U>, Serializable {
+	default SerializableBiConsumer<T, U> andThen(SerializableBiConsumer<? super T, ? super U> after) {
+		Objects.requireNonNull(after);
 
+		return (l, r) -> {
+			accept(l, r);
+			after.accept(l, r);
+		};
+	}
 }

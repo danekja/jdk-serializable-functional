@@ -31,6 +31,7 @@
 package org.danekja.java.util.function.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.function.BiPredicate;
 
 /**
@@ -40,5 +41,17 @@ import java.util.function.BiPredicate;
  */
 @FunctionalInterface
 public interface SerializableBiPredicate<T, U> extends BiPredicate<T, U>, Serializable {
+	default SerializableBiPredicate<T, U> and(SerializableBiPredicate<? super T, ? super U> other) {
+		Objects.requireNonNull(other);
+		return (T t, U u) -> test(t, u) && other.test(t, u);
+	}
 
+	default SerializableBiPredicate<T, U> negate() {
+		return (T t, U u) -> !test(t, u);
+	}
+
+	default SerializableBiPredicate<T, U> or(SerializableBiPredicate<? super T, ? super U> other) {
+		Objects.requireNonNull(other);
+		return (T t, U u) -> test(t, u) || other.test(t, u);
+	}
 }

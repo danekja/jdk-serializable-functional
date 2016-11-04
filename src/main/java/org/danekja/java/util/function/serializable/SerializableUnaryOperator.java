@@ -40,5 +40,7 @@ import java.util.function.UnaryOperator;
  */
 @FunctionalInterface
 public interface SerializableUnaryOperator<T> extends UnaryOperator<T>, Serializable {
-
+	static <T> SerializableUnaryOperator<T> identity() {
+		return t -> t;
+	}
 }
