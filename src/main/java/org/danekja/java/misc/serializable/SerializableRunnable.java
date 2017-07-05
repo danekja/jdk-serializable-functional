@@ -39,5 +39,10 @@ import java.io.Serializable;
  */
 @FunctionalInterface
 public interface SerializableRunnable extends Runnable, Serializable {
-
+	default SerializableRunnable andThen(final SerializableRunnable next) {
+		return () -> {
+			run();
+			next.run();
+		};
+	}
 }
