@@ -43,11 +43,31 @@ import java.util.function.BinaryOperator;
  */
 @FunctionalInterface
 public interface SerializableBinaryOperator<T> extends BinaryOperator<T>, Serializable {
+	/**
+	 * Returns a {@link SerializableBinaryOperator} which returns the lesser of
+	 * two elements according to the specified {@code Comparator}.
+	 *
+	 * @param <T> the type of the input arguments of the comparator
+	 * @param comparator a {@code Comparator} for comparing the two values
+	 * @return a {@code SerializableBinaryOperator} which returns the lesser of
+	 *         its operands, according to the supplied {@code Comparator}
+	 * @throws NullPointerException if the argument is null
+	 */
 	public static <T> SerializableBinaryOperator<T> minBy(Comparator<? super T> comparator) {
 		Objects.requireNonNull(comparator);
 		return (a, b) -> comparator.compare(a, b) <= 0 ? a : b;
 	}
 
+	/**
+	 * Returns a {@link SerializableBinaryOperator} which returns the greater of
+	 * two elements according to the specified {@code Comparator}.
+	 *
+	 * @param <T> the type of the input arguments of the comparator
+	 * @param comparator a {@code Comparator} for comparing the two values
+	 * @return a {@code SerializableBinaryOperator} which returns the greater of
+	 *         its operands, according to the supplied {@code Comparator}
+	 * @throws NullPointerException if the argument is null
+	 */
 	public static <T> SerializableBinaryOperator<T> maxBy(Comparator<? super T> comparator) {
 		Objects.requireNonNull(comparator);
 		return (a, b) -> comparator.compare(a, b) >= 0 ? a : b;

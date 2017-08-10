@@ -40,6 +40,12 @@ import java.util.function.UnaryOperator;
  */
 @FunctionalInterface
 public interface SerializableUnaryOperator<T> extends UnaryOperator<T>, Serializable {
+	/**
+	 * Returns a unary operator that always returns its input argument.
+	 *
+	 * @param <T> the type of the input and output of the operator
+	 * @return a unary operator that always returns its input argument
+	 */
 	static <T> SerializableUnaryOperator<T> identity() {
 		return t -> t;
 	}

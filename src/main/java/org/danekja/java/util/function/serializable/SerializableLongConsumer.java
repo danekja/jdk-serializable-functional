@@ -41,6 +41,18 @@ import java.util.function.LongConsumer;
  */
 @FunctionalInterface
 public interface SerializableLongConsumer extends LongConsumer, Serializable {
+	/**
+	 * Returns a composed {@code SerializableLongConsumer} that performs, in sequence,
+	 * this operation followed by the {@code after} operation. If performing either
+	 * operation throws an exception, it is relayed to the caller of the
+	 * composed operation.  If performing this operation throws an exception,
+	 * the {@code after} operation will not be performed.
+	 *
+	 * @param after the operation to perform after this operation
+	 * @return a composed {@code SerializableLongConsumer} that performs in sequence
+	 * this operation followed by the {@code after} operation
+	 * @throws NullPointerException if {@code after} is null
+	 */
     default SerializableLongConsumer andThen(SerializableLongConsumer after) {
         Objects.requireNonNull(after);
         return (long t) -> { accept(t); after.accept(t); };

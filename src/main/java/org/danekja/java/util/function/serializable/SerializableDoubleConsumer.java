@@ -41,6 +41,18 @@ import java.util.function.DoubleConsumer;
  */
 @FunctionalInterface
 public interface SerializableDoubleConsumer extends DoubleConsumer, Serializable {
+	/**
+	 * Returns a composed {@code SerializableDoubleConsumer} that performs, in sequence,
+	 * this operation followed by the {@code after} operation. If performing either
+	 * operation throws an exception, it is relayed to the caller of the
+	 * composed operation.  If performing this operation throws an exception,
+	 * the {@code after} operation will not be performed.
+	 *
+	 * @param after the operation to perform after this operation
+	 * @return a composed {@code SerializableDoubleConsumer} that performs in sequence
+	 * this operation followed by the {@code after} operation
+	 * @throws NullPointerException if {@code after} is null
+	 */
 	default SerializableDoubleConsumer andThen(SerializableDoubleConsumer after) {
 		Objects.requireNonNull(after);
 		return (double t) -> {
