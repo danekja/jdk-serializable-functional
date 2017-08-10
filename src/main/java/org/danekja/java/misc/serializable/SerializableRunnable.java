@@ -31,6 +31,7 @@
 package org.danekja.java.misc.serializable;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Serializable version of {@link Runnable}.
@@ -39,7 +40,21 @@ import java.io.Serializable;
  */
 @FunctionalInterface
 public interface SerializableRunnable extends Runnable, Serializable {
+	/**
+	 * Returns a composed {@code SerializableRunnable} that performs, in sequence,
+	 * this operation followed by the {@code next} operation. If performing either
+	 * operation throws an exception, it is relayed to the caller of the
+	 * composed operation.  If performing this operation throws an exception,
+	 * the {@code after} operation will not be performed.
+	 *
+	 * @param next the operation to perform after this operation
+	 * @return a composed {@code SerializableRunnable} that performs in sequence
+	 * this operation followed by the {@code next} operation
+	 * @throws NullPointerException if {@code next} is null
+	 */
 	default SerializableRunnable andThen(final SerializableRunnable next) {
+		Objects.requireNonNull(next);
+
 		return () -> {
 			run();
 			next.run();

@@ -41,6 +41,18 @@ import java.util.function.BiConsumer;
  */
 @FunctionalInterface
 public interface SerializableBiConsumer<T, U> extends BiConsumer<T, U>, Serializable {
+	/**
+	 * Returns a composed {@code SerializableBiConsumer} that performs, in sequence,
+	 * this operation followed by the {@code after} operation. If performing either
+	 * operation throws an exception, it is relayed to the caller of the
+	 * composed operation.  If performing this operation throws an exception,
+	 * the {@code after} operation will not be performed.
+	 *
+	 * @param after the operation to perform after this operation
+	 * @return a composed {@code SerializableBiConsumer} that performs in sequence
+	 * this operation followed by the {@code after} operation
+	 * @throws NullPointerException if {@code after} is null
+	 */
 	default SerializableBiConsumer<T, U> andThen(SerializableBiConsumer<? super T, ? super U> after) {
 		Objects.requireNonNull(after);
 
