@@ -1,0 +1,8 @@
+Bundle-Developers Jakub Danek <danek.ja@gmail.com>
+Bundle-Contributors Emond Papegaaij,\
+                    Jezza
+Bundle-Description A library containing Serializable versions of functional interfaces from java.util.function package.
+Bundle-License MIT
+-exportcontents: \
+	org.danekja.java.misc.serializable,\
+	org.danekja.java.util.function.serializable

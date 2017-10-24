@@ -62,6 +62,31 @@
                 </configuration>
             </plugin>
 
+            <!-- OSGi configuration
+
+             see http://njbartlett.name/2015/03/27/announcing-bnd-maven-plugin.html
+             -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <useDefaultManifestFile>true</useDefaultManifestFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>biz.aQute.bnd</groupId>
+                <artifactId>bnd-maven-plugin</artifactId>
+                <version>2.4.1</version>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>bnd-process</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <!-- RELEASE PLUGIN -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
