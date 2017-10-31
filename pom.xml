@@ -4,7 +4,7 @@
 
     <groupId>org.danekja</groupId>
     <artifactId>jdk-serializable-functional</artifactId>
-    <version>1.8.4</version>
+    <version>1.8.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}.${project.artifactId}</name>
@@ -34,7 +34,7 @@
         <connection>scm:git:ssh://git@github.com/danekja/jdk-serializable-functional.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/danekja/jdk-serializable-functional.git</developerConnection>
         <url>https://github.com/danekja/jdk-serializable-functional/tree/master</url>
-        <tag>v1.8.4</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
