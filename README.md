@@ -20,11 +20,15 @@ The library has been deployed to Maven Central. Add the following dependency to 
 </dependencies>
 ```
 
+## OSGi
+
+Starting with version 1.8.4, the library is also an OSGi bundle.
+
 ## Versioning
 The version identifier follows semantic scheme *major.minor.micro*, where *major* and *minor* portions
 identify JDK version and micro is used for this library versioning (documentation/build modifications, etc.).
 
 i.e. version **1.8.1** is the second release of this library based on JDK 1.8.  
 
-##Licensing
+## Licensing
 The library is licensed under the MIT License.
