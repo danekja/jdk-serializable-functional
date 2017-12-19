@@ -1,3 +1,6 @@
+Bundle-Name Serializable JDK Functional Interfaces
+Bundle-SymbolicName ${project.groupId}.${project.artifactId}
+Bundle-Version ${project.version}
 Bundle-Developers Jakub Danek <danek.ja@gmail.com>
 Bundle-Contributors Emond Papegaaij,\
                     Jezza
