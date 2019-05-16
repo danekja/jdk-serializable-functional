@@ -72,6 +72,11 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <useDefaultManifestFile>true</useDefaultManifestFile>
+                    <archive>
+                        <manifestEntries>
+                            <Automatic-Module-Name>org.danekja.jdk.serializable.functional</Automatic-Module-Name>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
             <plugin>
