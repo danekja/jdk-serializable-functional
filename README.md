@@ -10,6 +10,18 @@ Serializable<original_name>
 
 The library has been deployed to Maven Central. Add the following dependency to you project:
 
+### JDK 9
+```
+<dependencies>
+    <dependency>
+        <groupId>org.danekja</groupId>
+        <artifactId>jdk-serializable-functional</artifactId>
+        <version>1.9.0</version>
+    </dependency>
+</dependencies>
+```
+
+### JDK 8
 ```
 <dependencies>
     <dependency>
@@ -20,8 +32,9 @@ The library has been deployed to Maven Central. Add the following dependency to 
 </dependencies>
 ```
 
-## OSGi
+## Component Model
 
+Starting with version 1.9.0, the library is also a Java module.
 Starting with version 1.8.4, the library is also an OSGi bundle.
 
 ## Versioning
