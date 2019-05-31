@@ -15,7 +15,7 @@ The library has been deployed to Maven Central. Add the following dependency to 
     <dependency>
         <groupId>org.danekja</groupId>
         <artifactId>jdk-serializable-functional</artifactId>
-        <version>1.8.5</version>
+        <version>1.8.6</version>
     </dependency>
 </dependencies>
 ```
