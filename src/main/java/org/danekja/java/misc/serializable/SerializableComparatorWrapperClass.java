@@ -45,15 +45,15 @@ import org.danekja.java.util.function.serializable.SerializableSupplier;
  * Usage example:
  * 
  * <blockquote><pre>
- * SerializableComparator<Object> collator = new SerializableComparatorWrapper<>(() -> Collator.getInstance(Locale.UK));
- * SerializableComparator<Object> objectComparator = SerializableComparator.comparing(Object::toString, collator);
+ * SerializableComparator&lt;Object&gt; collator = new SerializableComparatorWrapper&lt;&gt;(() -&gt; Collator.getInstance(Locale.UK));
+ * SerializableComparator&lt;Object&gt; objectComparator = SerializableComparator.comparing(Object::toString, collator);
  * </pre></blockquote>
  * 
  * (Note that Collator is an instance of Comparator typed with Object, not with a generic type variable.)
  * 
  * @author haster
  *
- * @param <T>
+ * @param <T> comparable type
  */
 public class SerializableComparatorWrapperClass<T> implements SerializableComparator<T>
 {
